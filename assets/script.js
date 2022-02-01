@@ -65,32 +65,32 @@ function getForecast(){
         .then(function(oneCallData){
             console.log("this is the one call data below")
             console.log(oneCallData)
-            citySun.textContent = "UV Index: " + oneCallData.current.uvi
-            forecastDate1.textContent = oneCallData.daily[0].dt
-            forecastIcon1.textContent = oneCallData.daily[0].weather[0].icon
-            forecastTemp1.textContent = oneCallData.daily[0].temp.day
-            forecastWind1.textContent = oneCallData.daily[0].wind_speed
-            forecastHumidity1.textContent = oneCallData.daily[0].humidity
-            forecastDate2.textContent = oneCallData.daily[1].dt
-            forecastIcon2.textContent = oneCallData.daily[1].weather[0].icon
-            forecastTemp2.textContent = oneCallData.daily[1].temp.day
-            forecastWind2.textContent = oneCallData.daily[1].wind_speed
-            forecastHumidity2.textContent = oneCallData.daily[1].humidity
-            forecastDate3.textContent = oneCallData.daily[2].dt
-            forecastIcon3.textContent = oneCallData.daily[2].weather[0].icon
-            forecastTemp3.textContent = oneCallData.daily[2].temp.day
-            forecastWind3.textContent = oneCallData.daily[2].wind_speed
-            forecastHumidity3.textContent = oneCallData.daily[2].humidity
-            forecastDate4.textContent = oneCallData.daily[3].dt
-            forecastIcon4.textContent = oneCallData.daily[3].weather[0].icon
-            forecastTemp4.textContent = oneCallData.daily[3].temp.day
-            forecastWind4.textContent = oneCallData.daily[3].wind_speed
-            forecastHumidity4.textContent = oneCallData.daily[3].humidity
-            forecastDate5.textContent = oneCallData.daily[4].dt
-            forecastIcon5.textContent = oneCallData.daily[4].weather[0].icon
-            forecastTemp5.textContent = oneCallData.daily[4].temp.day
-            forecastWind5.textContent = oneCallData.daily[4].wind_speed
-            forecastHumidity5.textContent = oneCallData.daily[4].humidity
+            citySun.textContent = "UV Index: " + oneCallData.current.uvi;
+            forecastDate1.textContent = oneCallData.daily[0].dt;
+            forecastIcon1.setAttribute("src", "https://openweathermap.org/img/wn/" + oneCallData.daily[0].weather[0].icon + "@2x.png");
+            forecastTemp1.textContent = "Temp: " + oneCallData.daily[0].temp.day;
+            forecastWind1.textContent = "Wind: " + oneCallData.daily[0].wind_speed;
+            forecastHumidity1.textContent = "Humidity: " + oneCallData.daily[0].humidity;
+            forecastDate2.textContent = oneCallData.daily[1].dt;
+            forecastIcon2.setAttribute("src", "https://openweathermap.org/img/wn/" + oneCallData.daily[1].weather[0].icon + "@2x.png");
+            forecastTemp2.textContent = "Temp: " + oneCallData.daily[1].temp.day;
+            forecastWind2.textContent = "Wind: " + oneCallData.daily[1].wind_speed;
+            forecastHumidity2.textContent = "Humidity: " + oneCallData.daily[1].humidity;
+            forecastDate3.textContent = oneCallData.daily[2].dt;
+            forecastIcon3.setAttribute("src", "https://openweathermap.org/img/wn/" + oneCallData.daily[2].weather[0].icon + "@2x.png");
+            forecastTemp3.textContent = "Temp: " + oneCallData.daily[2].temp.day;
+            forecastWind3.textContent = "Wind: " + oneCallData.daily[2].wind_speed;
+            forecastHumidity3.textContent = "Humidity: " + oneCallData.daily[2].humidity;
+            forecastDate4.textContent = oneCallData.daily[3].dt;
+            forecastIcon4.setAttribute("src", "https://openweathermap.org/img/wn/" + oneCallData.daily[3].weather[0].icon + "@2x.png");
+            forecastTemp4.textContent = "Temp: " + oneCallData.daily[3].temp.day;
+            forecastWind4.textContent = "Wind: " + oneCallData.daily[3].wind_speed;
+            forecastHumidity4.textContent = "Humidity: " + oneCallData.daily[3].humidity;
+            forecastDate5.textContent = oneCallData.daily[4].dt;
+            forecastIcon5.setAttribute("src", "https://openweathermap.org/img/wn/" + oneCallData.daily[4].weather[0].icon + "@2x.png");
+            forecastTemp5.textContent = "Temp: " + oneCallData.daily[4].temp.day;
+            forecastWind5.textContent = "Wind: " + oneCallData.daily[4].wind_speed;
+            forecastHumidity5.textContent = "Humidity: " + oneCallData.daily[4].humidity;
             })
         })
     })
