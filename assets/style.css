@@ -34,6 +34,10 @@ body {
     border-radius: 5px;
 }
 
+.city-icon {
+    /* float: right; */
+}
+
 .forecast-container {
     padding: 15px;
     justify-content: space-between;

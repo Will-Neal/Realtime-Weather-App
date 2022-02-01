@@ -1,7 +1,9 @@
 //URL Related Variables
-var cityName = "New York"
-var apiKey = "3c57dad64990454f0e9db0300be708bc"
-var apiURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid="
+// var cityName = "New York"
+// var userInput = document.querySelector("form1").value
+// console.log("User Input Outside Function: " + userInput);
+// var apiKey = "3c57dad64990454f0e9db0300be708bc"
+// var apiURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid="
 //Event Listeners
 var searchBtn = document.querySelector("#searchButton")
 
@@ -11,6 +13,7 @@ var cityTemp = document.querySelector("#cityTemp")
 var cityMoist = document.querySelector("#cityHumidity")
 var cityWind = document.querySelector("#cityWind")
 var citySun = document.querySelector("#cityUV")
+var cityIcon = document.querySelector("#cityIcon")
 
 //5 Day forecast Elements
 var forecastDate1 = document.querySelector("#forecastDate1")
@@ -41,6 +44,10 @@ var forecastHumidity5 = document.querySelector("#forecastHumidity5")
 
 //call main API
 function getForecast(){
+    var cityName = document.querySelector("#form1").value
+    var apiKey = "3c57dad64990454f0e9db0300be708bc"
+    var apiURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid="
+    console.log(cityName)
     fetch(apiURL + apiKey)
     .then(function(response){
         return response.json()
@@ -49,7 +56,7 @@ function getForecast(){
         console.log(data)
         console.log(data.list[0].main)
         console.log(data.city.name)
-        cityHead.textContent = data.city.name
+        cityHead.textContent = data.city.name + " " + "(" + moment().format("L") + ")"
         cityTemp.textContent = "Temperature: " + data.list[0].main.temp
         cityMoist.textContent = "Humidity: " + data.list[0].main.humidity + "%"
         cityWind.textContent = "Wind Speed: " + data.list[0].wind.speed + "MPH"
@@ -66,6 +73,8 @@ function getForecast(){
             console.log("this is the one call data below")
             console.log(oneCallData)
             citySun.textContent = "UV Index: " + oneCallData.current.uvi;
+            cityIcon.setAttribute("src", "https://openweathermap.org/img/wn/" + oneCallData.daily[0].weather[0].icon + "@2x.png");
+            cityIcon.setAttribute("alt", oneCallData.daily[0].weather[0].description);
             forecastDate1.textContent = moment().add(1, 'days').format("L");
             forecastIcon1.setAttribute("src", "https://openweathermap.org/img/wn/" + oneCallData.daily[1].weather[0].icon + "@2x.png");
             forecastIcon1.setAttribute("alt", oneCallData.daily[1].weather[0].description)
