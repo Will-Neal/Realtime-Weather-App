@@ -19,13 +19,18 @@ body {
 }
 
 .input-group {
-    display: row;
+    display: table-column;
     border: black solid 2px;
     border-radius: 5px;
-    /* justify-content: center; */
     justify-content: center;
-    /* align-items: flex-start; */
-    align-items: center;
+    align-items: top;
+    /* padding: 0; */
+}
+
+.input-box {
+    /* display: table-row; */
+    display: inline-flex;
+    padding: 5px;
 }
 
 
@@ -34,14 +39,10 @@ body {
     border-radius: 5px;
 }
 
-.city-icon {
-    /* float: right; */
-}
 
 .forecast-container {
     padding: 15px;
     justify-content: space-between;
-
 }
 
 .day {
