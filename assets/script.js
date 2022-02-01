@@ -6,6 +6,7 @@
 // var apiURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid="
 //Event Listeners
 var searchBtn = document.querySelector("#searchButton")
+var clearBtn = document.querySelector("#clearHistory")
 
 //Elements
 var cityHead = document.querySelector("#cityName")
@@ -42,20 +43,24 @@ var forecastTemp5 = document.querySelector("#forecastTemp5")
 var forecastWind5 = document.querySelector("#forecastWind5")
 var forecastHumidity5 = document.querySelector("#forecastHumidity5")
 
+//Array variable for local storage
+var userSearch = JSON.parse(localStorage.getItem("userSearch")) || [];
+console.log("userSearch: " + userSearch)
+
 //call main API
 function getForecast(){
     var cityName = document.querySelector("#form1").value
     var apiKey = "3c57dad64990454f0e9db0300be708bc"
     var apiURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid="
-    console.log(cityName)
+    // console.log(cityName)
     fetch(apiURL + apiKey)
     .then(function(response){
         return response.json()
     })
     .then(function(data){
-        console.log(data)
-        console.log(data.list[0].main)
-        console.log(data.city.name)
+        // console.log(data)
+        // console.log(data.list[0].main)
+        // console.log(data.city.name)
         cityHead.textContent = data.city.name + " " + "(" + moment().format("L") + ")"
         cityTemp.textContent = "Temperature: " + data.list[0].main.temp
         cityMoist.textContent = "Humidity: " + data.list[0].main.humidity + "%"
@@ -70,8 +75,8 @@ function getForecast(){
         .then(function(secondResponse){
             return secondResponse.json()
         .then(function(oneCallData){
-            console.log("this is the one call data below")
-            console.log(oneCallData)
+            // console.log("this is the one call data below")
+            // console.log(oneCallData)
             citySun.textContent = "UV Index: " + oneCallData.current.uvi;
             cityIcon.setAttribute("src", "https://openweathermap.org/img/wn/" + oneCallData.daily[0].weather[0].icon + "@2x.png");
             cityIcon.setAttribute("alt", oneCallData.daily[0].weather[0].description);
@@ -110,5 +115,47 @@ function getForecast(){
     })
 }
 
+//Functions to save and retrieve data from Local Storage and create the buttons
+function saveSearch () {
+    var userInput = document.querySelector("#form1").value;
+    userSearch.push(userInput);
+    localStorage.setItem("userSearch", JSON.stringify(userSearch));
+    displayButtons()
+}
+
+function clearSearch() {
+    localStorage.clear()
+    location.reload()
+
+}
+
+//function to remove all child nodes so they dont get duplicated when the buttons are created by the for loop
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+var searchArea = document.querySelector("#historyButtons")
+function displayButtons(){
+    removeAllChildNodes(searchArea)
+    console.log("the display buttons function")
+    console.log("userSearch: " + userSearch)
+    for (var i=0; i<userSearch.length; i++){
+        console.log(i)
+        var newButton = document.createElement("button")
+        newButton.innerHTML = userSearch[i]
+        newButton.setAttribute("type", "button")
+        newButton.setAttribute("class", "btn btn-primary user-buttons")
+        newButton.setAttribute("id", "userButtons")
+        searchArea.appendChild(newButton)
+    }
+    
+}
 
 searchBtn.addEventListener("click", getForecast);
+searchBtn.addEventListener("click", saveSearch);
+
+clearBtn.addEventListener("click", clearSearch)
+
+displayButtons()
