@@ -21,13 +21,26 @@ body {
 .input-group {
     display: row;
     border: black solid 2px;
-    align-items: center;
+    border-radius: 5px;
+    justify-content: start;
+    align-items: flex-start;
 }
+
 
 .city-weather {
     border: black 1px solid;
+    border-radius: 5px;
 }
 
-.day-1 {
+.forecast-container {
+    padding: 15px;
+    justify-content: space-between;
+
+}
+
+.day {
+    background-color: rgba(12, 36, 71, 0.863);
+    color: white;
     border: solid black 2px;
+    border-radius: 4px;
 }

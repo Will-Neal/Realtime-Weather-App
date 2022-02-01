@@ -12,6 +12,7 @@ var cityMoist = document.querySelector("#cityHumidity")
 var cityWind = document.querySelector("#cityWind")
 var citySun = document.querySelector("#cityUV")
 
+//call main API
 function getForecast(){
     fetch(apiURL + apiKey)
     .then(function(response){
@@ -26,6 +27,20 @@ function getForecast(){
         cityMoist.textContent = "Humidity: " + data.list[0].main.humidity + "%"
         cityWind.textContent = "Wind Speed: " + data.list[0].wind.speed + "MPH"
         citySun.textContent = "UV Index: "
+        
+        
+        var lat = data.city.coord.lat
+        var lon = data.city.coord.lon
+        var oneCallURL = "https://api.openweathermap.org/data/2.5/onecall?lat="+ lat + "&lon=" + lon + "&appid=" + apiKey;
+        fetch(oneCallURL)
+        .then(function(secondResponse){
+            return secondResponse.json()
+        .then(function(oneCallData){
+            console.log("this is the one call data below")
+            console.log(oneCallData)
+            citySun.textContent = "UV Index: " + oneCallData.current.uvi
+            })
+        })
     })
 }
 
