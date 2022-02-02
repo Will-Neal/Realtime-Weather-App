@@ -48,8 +48,8 @@ var userSearch = JSON.parse(localStorage.getItem("userSearch")) || [];
 console.log("userSearch: " + userSearch)
 
 //call main API
-function getForecast(){
-    var cityName = document.querySelector("#form1").value
+function getForecast(cityName){
+    // var cityName = document.querySelector("#form1").value
     var apiKey = "3c57dad64990454f0e9db0300be708bc"
     var apiURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid="
     // console.log(cityName)
@@ -136,24 +136,35 @@ function removeAllChildNodes(parent) {
     }
 }
 
+
+
+
+//function to take cities in local storage and display them as buttons
 var searchArea = document.querySelector("#historyButtons")
 function displayButtons(){
     removeAllChildNodes(searchArea)
-    console.log("the display buttons function")
-    console.log("userSearch: " + userSearch)
+    // console.log("the display buttons function")
+    // console.log("userSearch: " + userSearch)
     for (var i=0; i<userSearch.length; i++){
-        console.log(i)
-        var newButton = document.createElement("button")
-        newButton.innerHTML = userSearch[i]
-        newButton.setAttribute("type", "button")
-        newButton.setAttribute("class", "btn btn-primary user-buttons")
-        newButton.setAttribute("id", "userButtons")
-        searchArea.appendChild(newButton)
+        // console.log(i)
+        var newButton = document.createElement("button");
+        newButton.innerHTML = userSearch[i];
+        newButton.setAttribute("type", "button");
+        newButton.setAttribute("class", "btn btn-primary user-buttons");
+        newButton.setAttribute("id", "userButtons");
+        newButton.addEventListener("click", function(){
+            getForecast(this.innerHTML)
+            // console.log(newButton.innerHTML)
+        })
+        searchArea.appendChild(newButton);
     }
     
 }
 
-searchBtn.addEventListener("click", getForecast);
+searchBtn.addEventListener("click", function(){
+    var cityName = document.querySelector("#form1").value
+    getForecast(cityName)
+});
 searchBtn.addEventListener("click", saveSearch);
 
 clearBtn.addEventListener("click", clearSearch)
