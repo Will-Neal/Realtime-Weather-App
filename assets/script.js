@@ -9,6 +9,7 @@ var searchBtn = document.querySelector("#searchButton")
 var clearBtn = document.querySelector("#clearHistory")
 
 //Elements
+
 var cityHead = document.querySelector("#cityName")
 var cityTemp = document.querySelector("#cityTemp")
 var cityMoist = document.querySelector("#cityHumidity")
@@ -61,11 +62,13 @@ function getForecast(cityName){
         // console.log(data)
         // console.log(data.list[0].main)
         // console.log(data.city.name)
-        cityHead.textContent = data.city.name + " " + "(" + moment().format("L") + ")"
-        cityTemp.textContent = "Temperature: " + data.list[0].main.temp
-        cityMoist.textContent = "Humidity: " + data.list[0].main.humidity + "%"
-        cityWind.textContent = "Wind Speed: " + data.list[0].wind.speed + "MPH"
-        citySun.textContent = "UV Index: "
+        var weatherContainer = document.querySelector("#weatherContainer")
+        weatherContainer.classList.remove("hidden");
+        cityHead.textContent = data.city.name + " " + "(" + moment().format("L") + ")";
+        cityTemp.textContent = "Temperature: " + data.list[0].main.temp;
+        cityMoist.textContent = "Humidity: " + data.list[0].main.humidity + "%";
+        cityWind.textContent = "Wind Speed: " + data.list[0].wind.speed + "MPH";
+        citySun.textContent = "UV Index: ";
         
         
         var lat = data.city.coord.lat

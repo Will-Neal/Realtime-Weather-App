@@ -8,6 +8,10 @@ body {
     background-color: rgba(253, 247, 232, 0.329);
 }
 
+.hidden {
+    display: none;
+}
+
 .app-wrap {
     display: flex;
 }
@@ -20,7 +24,7 @@ body {
 
 .input-group {
     display: table-column;
-    border: black solid 2px;
+    /* border: black solid 2px; */
     border-radius: 5px;
     justify-content: center;
     align-items: top;
