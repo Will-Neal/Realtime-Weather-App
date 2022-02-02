@@ -75,3 +75,17 @@ body {
 #clearHistory {
     background-color: rgb(177, 5, 5);
 }
+buttons:hover {
+    filter: brightness(150%);
+    
+}
+
+#searchButton:hover {
+    filter: brightness(150%);
+    background-color: rgba(14, 53, 104, 0.863);
+}
+
+#clearHistory:hover {
+    filter: brightness(150%);
+    background-color: rgb(158, 100, 100);
+}
