@@ -17,3 +17,9 @@ This application uses the OpenWeatherMap API to get real time information for th
 [Click here for deployed application](https://will-neal.github.io/Realtime-Weather-App/)
 
 ## Screenshot
+
+![Landing Page](https://github.com/Will-Neal/Realtime-Weather-App/blob/main/assets/images/LandingPage.jpg?raw=true)
+
+![City Search](https://github.com/Will-Neal/Realtime-Weather-App/blob/main/assets/images/weatherDisplay.jpg?raw=true)
+
+![404](https://github.com/Will-Neal/Realtime-Weather-App/blob/main/assets/images/404.jpg?raw=true)
