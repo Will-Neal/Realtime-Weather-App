@@ -79,8 +79,20 @@ function getForecast(cityName){
             return secondResponse.json()
         .then(function(oneCallData){
             // console.log("this is the one call data below")
-            // console.log(oneCallData)
-            citySun.textContent = "UV Index: " + oneCallData.current.uvi;
+            console.log(oneCallData)
+            citySun.textContent = "UV Index: " + oneCallData.daily[0].uvi;
+            uvIndexValue = Number(oneCallData.daily[0].uvi)
+            console.log("uvIndexValue: " +uvIndexValue)
+            if (uvIndexValue <= 3) {
+                // console.log("the Uv Index is low")
+                citySun.style.backgroundColor = "green";
+            } else if (uvIndexValue >= 7) {
+                // console.log("the UV Index is severe")
+                citySun.style.backgroundColor = "red";
+            } else {
+                // console.log("the UV Index is moderate")
+                citySun.style.backgroundColor = "yellow"
+            }
             cityIcon.setAttribute("src", "https://openweathermap.org/img/wn/" + oneCallData.daily[0].weather[0].icon + "@2x.png");
             cityIcon.setAttribute("alt", oneCallData.daily[0].weather[0].description);
             forecastDate1.textContent = moment().add(1, 'days').format("L");

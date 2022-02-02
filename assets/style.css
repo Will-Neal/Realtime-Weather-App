@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: rgba(253, 247, 232, 0.329);
+    background-color: rgba(144, 166, 177, 0.884);
 }
 
 .hidden {
@@ -39,8 +39,14 @@ body {
 
 
 .city-weather {
-    border: black 1px solid;
+    border: grey 2px solid;
     border-radius: 5px;
+    font-weight: bold;
+    padding: 15px;
+}
+
+#cityUV {
+    display: inline-block;
 }
 
 
@@ -50,8 +56,22 @@ body {
 }
 
 .day {
-    background-color: rgba(12, 36, 71, 0.863);
+    background-color: rgba(1, 4, 8, 0.863);
     color: white;
-    border: solid black 2px;
+    border: solid grey 2px;
     border-radius: 4px;
+}
+
+.user-buttons {
+    border: none;
+    margin:5px;
+    background-color: rgba(1, 4, 8, 0.863);
+}
+
+#searchButton {
+    background-color: rgba(1, 4, 8, 0.863);
+}
+
+#clearHistory {
+    background-color: rgb(177, 5, 5);
 }
