@@ -2,7 +2,7 @@
 
 ## Description
 
-The weather dashboard is a real time weather application that takes user input fort the city and then displays both the weather for the day in that city as well as a five day forecast. The application displays the temperature, Wind Speed and Humidity along with the date and an icon representing the weather conditions. The day forecast for the city also displays the UV index for the day with a color coded background indicating weather the UV level is low, moderate or severe. When the user searches for a city it is saved and a button is created to search for that city again if they choose to do so. 
+The weather dashboard is a real time weather application that takes user input to search for a city and then displays the weather for that day in that city as well as the five day future forecast. The application displays the temperature, Wind Speed and Humidity along with the date and an icon representing the weather conditions. The day forecast for the city also displays the UV index for the day with a color coded background indicating weather the UV level is low, moderate or severe. When the user searches for a city it is saved and a button is created to search for that city again if they choose to do so. 
 
 ## Background 
 
@@ -10,7 +10,7 @@ Weather applications are an integral part of the modern world. The vast majority
 
 ## Functionality
 
-This application uses the OpenWeatherMap API to get real time information for the city of the users choice. The application uses JavaScript to take the user input and feed that to the API then to inject the API response into the webpage and display that information to the user. The user searches are saved in local storage which is then retrieved and displayed as active buttons. There is also a clear button that allows the user to clear the localStorage and delete the old buttons. The page also checks the response status and only proceeds if the response is a 200 meaning that it is good, and alerts the user that their input wasn't valid. 
+This application uses the OpenWeatherMap API to get real time information for the city of the users choice. The application uses JavaScript to take the user input and feed that to the API then to inject the API response into the webpage and display that information to the user. The user searches are saved in local storage which is then retrieved and displayed as active buttons. There is also a clear button that allows the user to clear the localStorage and delete the old buttons. When the user provides input, a conditional checks the response status and only proceeds if the response is a 200 indicating that it was successful and otherwise alerts the user if their input wasn't valid. Similarly a conditional checks if the user provide empty input and prevents an empty button from being created.
 
 ## Deployment 
 
