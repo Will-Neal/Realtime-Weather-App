@@ -1,14 +1,8 @@
-//URL Related Variables
-// var cityName = "New York"
-// var userInput = document.querySelector("form1").value
-// console.log("User Input Outside Function: " + userInput);
-// var apiKey = "3c57dad64990454f0e9db0300be708bc"
-// var apiURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid="
-//Event Listeners
+//Variables for Event Listeners
 var searchBtn = document.querySelector("#searchButton")
 var clearBtn = document.querySelector("#clearHistory")
 
-//Elements
+//Elements for the Main City Forecast
 
 var cityHead = document.querySelector("#cityName")
 var cityTemp = document.querySelector("#cityTemp")
@@ -46,22 +40,17 @@ var forecastHumidity5 = document.querySelector("#forecastHumidity5")
 
 //Array variable for local storage
 var userSearch = JSON.parse(localStorage.getItem("userSearch")) || [];
-console.log("userSearch: " + userSearch)
 
-//call main API
+
+//call main API and get forecast data then update the HTML with that data
 function getForecast(cityName){
-    // var cityName = document.querySelector("#form1").value
     var apiKey = "3c57dad64990454f0e9db0300be708bc"
     var apiURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=imperial&appid="
-    // console.log(cityName)
     fetch(apiURL + apiKey)
     .then(function(response){
         if (response.status == 200){
             return response.json()
             .then(function(data){
-                // console.log(data)
-                // console.log(data.list[0].main)
-                // console.log(data.city.name)
                 var weatherContainer = document.querySelector("#weatherContainer")
                 weatherContainer.classList.remove("hidden");
                 cityHead.textContent = data.city.name + " " + "(" + moment().format("L") + ")";
@@ -78,19 +67,13 @@ function getForecast(cityName){
                 .then(function(secondResponse){
                     return secondResponse.json()
                 .then(function(oneCallData){
-                    // console.log("this is the one call data below")
-                    console.log(oneCallData)
                     citySun.textContent = "UV Index: " + oneCallData.daily[0].uvi;
                     uvIndexValue = Number(oneCallData.daily[0].uvi)
-                    console.log("uvIndexValue: " +uvIndexValue)
                     if (uvIndexValue <= 3) {
-                        // console.log("the Uv Index is low")
                         citySun.style.backgroundColor = "green";
                     } else if (uvIndexValue >= 7) {
-                        // console.log("the UV Index is severe")
                         citySun.style.backgroundColor = "red";
                     } else {
-                        // console.log("the UV Index is moderate")
                         citySun.style.backgroundColor = "yellow"
                     }
                     cityIcon.setAttribute("src", "https://openweathermap.org/img/wn/" + oneCallData.daily[0].weather[0].icon + "@2x.png");
@@ -140,11 +123,16 @@ function getForecast(cityName){
 //Functions to save and retrieve data from Local Storage and create the buttons
 function saveSearch () {
     var userInput = document.querySelector("#form1").value;
+    if (userInput == "") {
+        return
+    } else {
     userSearch.push(userInput);
     localStorage.setItem("userSearch", JSON.stringify(userSearch));
     displayButtons()
 }
+}
 
+//Function to clear localStorage
 function clearSearch() {
     localStorage.clear()
     location.reload()
@@ -165,10 +153,7 @@ function removeAllChildNodes(parent) {
 var searchArea = document.querySelector("#historyButtons")
 function displayButtons(){
     removeAllChildNodes(searchArea)
-    // console.log("the display buttons function")
-    // console.log("userSearch: " + userSearch)
     for (var i=0; i<userSearch.length; i++){
-        // console.log(i)
         var newButton = document.createElement("button");
         newButton.innerHTML = userSearch[i];
         newButton.setAttribute("type", "button");
@@ -176,12 +161,13 @@ function displayButtons(){
         newButton.setAttribute("id", "userButtons");
         newButton.addEventListener("click", function(){
             getForecast(this.innerHTML)
-            // console.log(newButton.innerHTML)
         })
         searchArea.appendChild(newButton);
     }
     
 }
+
+//Event Listeners including a function that passes the value from the button into the getforecast function
 
 searchBtn.addEventListener("click", function(){
     var cityName = document.querySelector("#form1").value
