@@ -65,9 +65,9 @@ function getForecast(cityName){
                 var weatherContainer = document.querySelector("#weatherContainer")
                 weatherContainer.classList.remove("hidden");
                 cityHead.textContent = data.city.name + " " + "(" + moment().format("L") + ")";
-                cityTemp.textContent = "Temperature: " + data.list[0].main.temp;
+                cityTemp.textContent = "Temperature: " + data.list[0].main.temp + "°F";
                 cityMoist.textContent = "Humidity: " + data.list[0].main.humidity + "%";
-                cityWind.textContent = "Wind Speed: " + data.list[0].wind.speed + "MPH";
+                cityWind.textContent = "Wind Speed: " + data.list[0].wind.speed + " mph";
                 citySun.textContent = "UV Index: ";
                 
                 
@@ -98,33 +98,33 @@ function getForecast(cityName){
                     forecastDate1.textContent = moment().add(1, 'days').format("L");
                     forecastIcon1.setAttribute("src", "https://openweathermap.org/img/wn/" + oneCallData.daily[1].weather[0].icon + "@2x.png");
                     forecastIcon1.setAttribute("alt", oneCallData.daily[1].weather[0].description)
-                    forecastTemp1.textContent = "Temp: " + oneCallData.daily[1].temp.day;
-                    forecastWind1.textContent = "Wind: " + oneCallData.daily[1].wind_speed;
-                    forecastHumidity1.textContent = "Humidity: " + oneCallData.daily[1].humidity;
+                    forecastTemp1.textContent = "Temp: " + oneCallData.daily[1].temp.day + "°F";
+                    forecastWind1.textContent = "Wind: " + oneCallData.daily[1].wind_speed + " mph";
+                    forecastHumidity1.textContent = "Humidity: " + oneCallData.daily[1].humidity + "%";
                     forecastDate2.textContent = moment().add(2, 'days').format("L");
                     forecastIcon2.setAttribute("src", "https://openweathermap.org/img/wn/" + oneCallData.daily[2].weather[0].icon + "@2x.png");
                     forecastIcon2.setAttribute("alt", oneCallData.daily[2].weather[0].description)
-                    forecastTemp2.textContent = "Temp: " + oneCallData.daily[2].temp.day;
-                    forecastWind2.textContent = "Wind: " + oneCallData.daily[2].wind_speed;
-                    forecastHumidity2.textContent = "Humidity: " + oneCallData.daily[2].humidity;
+                    forecastTemp2.textContent = "Temp: " + oneCallData.daily[2].temp.day + "°F";
+                    forecastWind2.textContent = "Wind: " + oneCallData.daily[2].wind_speed + " mph";
+                    forecastHumidity2.textContent = "Humidity: " + oneCallData.daily[2].humidity + "%";
                     forecastDate3.textContent = moment().add(3, 'days').format("L");
                     forecastIcon3.setAttribute("src", "https://openweathermap.org/img/wn/" + oneCallData.daily[3].weather[0].icon + "@2x.png");
                     forecastIcon3.setAttribute("alt", oneCallData.daily[3].weather[0].description)
-                    forecastTemp3.textContent = "Temp: " + oneCallData.daily[3].temp.day;
-                    forecastWind3.textContent = "Wind: " + oneCallData.daily[3].wind_speed;
-                    forecastHumidity3.textContent = "Humidity: " + oneCallData.daily[3].humidity;
+                    forecastTemp3.textContent = "Temp: " + oneCallData.daily[3].temp.day + "°F";
+                    forecastWind3.textContent = "Wind: " + oneCallData.daily[3].wind_speed + " mph";
+                    forecastHumidity3.textContent = "Humidity: " + oneCallData.daily[3].humidity + "%";
                     forecastDate4.textContent = moment().add(4, 'days').format("L");
                     forecastIcon4.setAttribute("src", "https://openweathermap.org/img/wn/" + oneCallData.daily[4].weather[0].icon + "@2x.png");
                     forecastIcon4.setAttribute("alt", oneCallData.daily[4].weather[0].description)
-                    forecastTemp4.textContent = "Temp: " + oneCallData.daily[4].temp.day;
-                    forecastWind4.textContent = "Wind: " + oneCallData.daily[4].wind_speed;
-                    forecastHumidity4.textContent = "Humidity: " + oneCallData.daily[4].humidity;
+                    forecastTemp4.textContent = "Temp: " + oneCallData.daily[4].temp.day + "°F";
+                    forecastWind4.textContent = "Wind: " + oneCallData.daily[4].wind_speed + " mph";
+                    forecastHumidity4.textContent = "Humidity: " + oneCallData.daily[4].humidity + "%";
                     forecastDate5.textContent = moment().add(5, 'days').format("L");
                     forecastIcon5.setAttribute("src", "https://openweathermap.org/img/wn/" + oneCallData.daily[5].weather[0].icon + "@2x.png");
                     forecastIcon5.setAttribute("alt", oneCallData.daily[5].weather[0].description)
-                    forecastTemp5.textContent = "Temp: " + oneCallData.daily[5].temp.day;
-                    forecastWind5.textContent = "Wind: " + oneCallData.daily[5].wind_speed;
-                    forecastHumidity5.textContent = "Humidity: " + oneCallData.daily[5].humidity;
+                    forecastTemp5.textContent = "Temp: " + oneCallData.daily[5].temp.day + "°F";
+                    forecastWind5.textContent = "Wind: " + oneCallData.daily[5].wind_speed + " mph";
+                    forecastHumidity5.textContent = "Humidity: " + oneCallData.daily[5].humidity + "%";
                     })
                 })
             })
