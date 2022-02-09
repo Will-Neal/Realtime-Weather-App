@@ -1,4 +1,4 @@
-# Realtime-Weather-App
+# Weather Dashboard
 
 ## Description
 
